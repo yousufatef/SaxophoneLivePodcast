@@ -1,4 +1,4 @@
-import './Carousel.css';
+import './carousel.css';
 
 const Carousel = () => {
     const tickerItems = [
