@@ -8,7 +8,7 @@ const Hero = () => {
                     {/* Hero Image Section */}
                     <div className="relative aspect-square rounded-2xl overflow-hidden border-2 border-amber-500/30">
                         <img
-                            src="/public/images/hero.png"
+                            src="/images/hero.png"
                             alt="Hero image"
                             className="object-cover w-full h-full"
                         />

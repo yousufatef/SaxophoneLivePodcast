@@ -13,7 +13,7 @@ const App = () => {
       {/* Landing Image */}
       <div className="pt-16">
         <img
-          src="/public/images/landing.png"
+          src="/images/landing.png"
           alt="Podcast background"
           className="object-cover"
         />
@@ -30,7 +30,7 @@ const App = () => {
             The Billion-Dollar Show for DeWorld
           </p>
           <button className="flex items-center justify-center gap-2 cursor-pointer bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold px-6 py-3 text-lg rounded-full">
-            <Wallet className="w-6 h-6" /> 
+            <Wallet className="w-6 h-6" />
             <span>Connect Wallet</span>
           </button>
         </div>
