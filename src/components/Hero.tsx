@@ -1,64 +1,112 @@
-import { PlayCircle, CheckCircle } from 'lucide-react';
+import { CheckCircle } from "lucide-react"
 
-const Hero = () => {
-    return (
-        <div className="py-16 md:py-20 bg-gradient-to-b from-black to-zinc-900">
-            <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    {/* Hero Image Section */}
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border-2 border-amber-500/30">
-                        <img
-                            src="/images/hero.png"
-                            alt="Hero image"
-                            className="object-cover w-full h-full"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-tr from-black/70 to-transparent" />
-                        <div className="absolute bottom-6 left-6 right-6 flex items-center gap-4">
-                            <button className="rounded-full w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-amber-500 hover:bg-amber-400 text-black">
-                                <PlayCircle className="text-4xl cursor-pointer" />
-                            </button>
-                            <div>
-                                <h3 className="text-base sm:text-lg font-bold text-white">Crypto Talk #42</h3>
-                                <p className="text-xs sm:text-sm text-amber-200">The Future of DeFi</p>
-                            </div>
-                        </div>
-                    </div>
+interface HeroProps {
+  imagePosition?: "left" | "right"
+  image: {
+    src: string
+    alt: string
+  }
+  title: string
+  description?: string
+  features?: string[]
+  primaryButton?: {
+    text: string
+    onClick?: () => void
+  }
+  secondaryButton?: {
+    text: string
+    onClick?: () => void
+  }
+  className?: string
+  imageClassName?: string
+  contentClassName?: string
+}
 
-                    {/* Content Section */}
-                    <div className="space-y-6">
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-amber-500 to-yellow-300 bg-clip-text text-transparent">
-                            The First Voice of DeWorld – Live & Unfiltered
-                        </h2>
-                        <p className="text-base sm:text-lg text-amber-100/80">
-                            Weekly Discussions on the Future of Innovation & Decentralization
-                        </p>
-                        <ul className="space-y-4">
-                            {[
-                                "Weekly Discussions on the Future of Innovation & Decentralization",
-                                "HNWIs, Blockchain Experts, & Game-Changing Thinkers",
-                                "Bridging the gap between centralized power and decentralized freedom",
-                            ].map((feature, index) => (
-                                <li key={index} className="flex items-start gap-3">
-                                    <div className="mt-1 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-black">
-                                        <CheckCircle className="w-4 h-4" />
-                                    </div>
-                                    <span className="text-amber-100">{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-                        <div className="flex flex-wrap gap-4 pt-4">
-                            <button className="bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-medium px-4 py-2 cursor-pointer">
-                                Join the Live Show
-                            </button>
-                            <button className="text-amber-400 cursor-pointer">
-                                Vote the Next Topic
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+const Hero = ({
+  imagePosition = "left",
+  image,
+  title,
+  description,
+  features = [],
+  primaryButton,
+  secondaryButton,
+  className = "",
+  imageClassName = "",
+  contentClassName = "",
+}: HeroProps) => {
+
+    const ImageElement = (
+    <div
+      className={`relative aspect-square rounded-2xl overflow-hidden border-2 border-amber-500/30 ${imageClassName}`}
+    >
+      <img src={image.src || "/placeholder.svg"} alt={image.alt} className="object-cover w-full h-full" />
+    </div>
+  )
+
+  // Create the content element
+  const ContentElement = (
+    <div className={`space-y-6 ${contentClassName}`}>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-amber-500 to-yellow-300 bg-clip-text text-transparent">
+        {title}
+      </h2>
+
+      {description && <p className="text-base sm:text-lg text-amber-100/80">{description}</p>}
+
+      {features.length > 0 && (
+        <ul className="space-y-4">
+          {features.map((feature, index) => (
+            <li key={index} className="flex items-start gap-3">
+              <div className="mt-1 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-black">
+                <CheckCircle className="w-4 h-4" />
+              </div>
+              <span className="text-amber-100">{feature}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {(primaryButton || secondaryButton) && (
+        <div className="flex flex-wrap gap-4 pt-4">
+          {primaryButton && (
+            <button
+              onClick={primaryButton.onClick}
+              className="bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-medium px-4 py-2 rounded cursor-pointer"
+            >
+              {primaryButton.text}
+            </button>
+          )}
+
+          {secondaryButton && (
+            <button onClick={secondaryButton.onClick} className="text-amber-400 cursor-pointer">
+              {secondaryButton.text}
+            </button>
+          )}
         </div>
-    );
-};
+      )}
+    </div>
+  )
 
-export default Hero;
+  return (
+    <div className={`py-16 md:py-20 bg-gradient-to-b from-black to-zinc-900 ${className}`}>
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Conditionally render based on imagePosition */}
+          {imagePosition === "left" ? (
+            <>
+              {ImageElement}
+              {ContentElement}
+            </>
+          ) : (
+            <>
+              {ContentElement}
+              {ImageElement}
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Hero
+

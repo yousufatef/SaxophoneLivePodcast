@@ -36,7 +36,66 @@ const App = () => {
         </div>
       </section>
       <Carousel />
-      <Hero />
+      <Hero
+        image={{
+          src: "/images/hero.png",
+          alt: "Hero image",
+        }}
+        title="The First Voice of DeWorld – Live & Unfiltered"
+        description="Weekly Discussions on the Future of Innovation & Decentralization"
+        features={[
+          "Weekly Discussions on the Future of Innovation & Decentralization",
+          "HNWIs, Blockchain Experts, & Game-Changing Thinkers",
+          "Bridging the gap between centralized power and decentralized freedom",
+        ]}
+        primaryButton={{
+          text: "Join the Live Show",
+          onClick: () => console.log("Join clicked"),
+        }}
+        secondaryButton={{
+          text: "Vote the Next Topic",
+          onClick: () => console.log("Vote clicked"),
+        }}
+      />
+       <Hero
+        imagePosition="right"
+        image={{
+          src: "/images/show.png",
+          alt: "Another hero image",
+        }}
+        title="What is Saxophone Live Podcast?"
+        description="The Ultimate Live Debate Between Centralized & Decentralized Thinkers"
+        features={[
+          "HNWIs Meet DeWorld – Billionaires & blockchain leaders debate innovation",
+          "Real-World Impact – Discussions that shape the future of finance, AI, and Web3.",
+          "Community-Powered – Listeners vote on topics and engage in live discussions.",
+          "Funding New Ideas – Highlighting projects, startups, and solutions",
+          "Market Insights – The latest trends and opportunities in the DeWorld ecosystem.",
+        ]}
+        primaryButton={{
+          text: "Get Started",
+          onClick: () => console.log("Get started clicked"),
+        }}
+      />
+       <Hero
+        image={{
+          src: "/images/show.png",
+          alt: "Another hero image",
+        }}
+        title="What is Saxophone Live Podcast?"
+        description="The Ultimate Live Debate Between Centralized & Decentralized Thinkers"
+        features={[
+          "HNWIs Meet DeWorld – Billionaires & blockchain leaders debate innovation",
+          "Real-World Impact – Discussions that shape the future of finance, AI, and Web3.",
+          "Community-Powered – Listeners vote on topics and engage in live discussions.",
+          "Funding New Ideas – Highlighting projects, startups, and solutions",
+          "Market Insights – The latest trends and opportunities in the DeWorld ecosystem.",
+        ]}
+        primaryButton={{
+          text: "Get Started",
+          onClick: () => console.log("Get started clicked"),
+        }}
+      />
     </div>
   )
 }
