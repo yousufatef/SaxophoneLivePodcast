@@ -7,6 +7,7 @@ import AboutSection from './components/AboutSection';
 import EpisodesSection from './components/EpisodesSection';
 import GuestsSection from './components/GuestsSection';
 import Footer from './components/Footer';
+import Web3Header from './components/Web3Header';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,6 +32,7 @@ function App() {
             className="w-full h-full object-cover"
           />
         </div>
+        <Web3Header />
         <Hero />
         <BrandsCarousel />
         <AboutSection />
