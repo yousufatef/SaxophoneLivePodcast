@@ -26,7 +26,7 @@ function App() {
       <main>
         <div className="">
           <img
-            src="/public/images/landing.png"
+            src="/images/landing.png"
             alt="Neon microphone"
             className="w-full h-full object-cover"
           />

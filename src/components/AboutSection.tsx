@@ -73,12 +73,12 @@ const AboutSection: React.FC = () => {
                             <div className="grid h-full">
                                 <div>
                                     <img
-                                        src="/public/images/show.png"
+                                        src="/images/show.png"
                                         alt="Podcast host and guest"
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
-                           </div>
+                            </div>
                         </div>
                     </div>
                 </div>
